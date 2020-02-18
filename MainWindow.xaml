@@ -7,92 +7,110 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Grid>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height ="18"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-
-
-        <Grid Grid.Row="0">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition> </ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Button x:Name="credeUser" Margin ="3"  Grid.Row="0" Grid.Column="6" Click="credeUser_Click">New Profile</Button>
-            <Button x:Name="openFile" Margin ="3"  Grid.Row="1" Grid.Column="6" Click="openFile_Click">Open profile</Button>
-            <Button x:Name="saveFile" Margin ="3" Grid.Row="2" Grid.Column="6" Click="saveFile_Click" >Save profile</Button>
-            
-            <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">Ошибки</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">Правильные ответы</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">Имя</TextBlock>
-            <TextBox x:Name="textUserName" Grid.Column="1" Grid.Row="0"  TextAlignment="Center"  TextWrapping="Wrap" 
-                     HorizontalAlignment="Right" BorderThickness="1" IsEnabled="False"> Neve User</TextBox>
-            <TextBlock x:Name="textMisteke" Grid.Column="1" Grid.Row="1" Margin="0" TextAlignment="Center"  TextWrapping="Wrap" HorizontalAlignment="Right">0</TextBlock>
-            <TextBlock x:Name="textСorrectAnswer" Grid.Column="1" Grid.Row="2" Margin="0" TextAlignment="Center"  TextWrapping="Wrap" HorizontalAlignment="Right" >0</TextBlock>
-        </Grid>
-
+        <Menu Height="19">
+            <MenuItem Header="Menu">
+                <MenuItem Header="New user" Click="credeUser_Click"></MenuItem>
+                <MenuItem Header="Open profile" Click="openFile_Click"></MenuItem>
+                <MenuItem Header="Save profile" Click="saveFile_Click"></MenuItem>
+                <MenuItem Header="Exit" Click="MenuItemExit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Setting">
+                <MenuItem Header="Cange name"></MenuItem>
+                <MenuItem Header="Cange name"></MenuItem>
+            </MenuItem>
+        </Menu>
 
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
 
-                <RowDefinition Height="3.5*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
 
-
-
-
-            <Grid Grid.Row="1" x:Name="buttonsInGrid">
+            <Grid Grid.Row="0">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-
-                </Grid.ColumnDefinitions>
-                <Button x:Name="butAnswer1" Margin="15" Grid.Column="0" Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
-                <Button x:Name="butAnswer2" Margin="15" Grid.Column="2"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
-                <Button x:Name="butAnswer3" Margin="15" Grid.Column="4"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
-
-            </Grid>
-            <Grid Grid.Row="2">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-                <Button x:Name="butAnswer4" Margin="15" Grid.Column="1"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
-                <Button x:Name="butAnswer5" Margin="15" Grid.Column="3"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+
+
+               
+
+                <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">Ошибки</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">Правильные ответы</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">Имя</TextBlock>
+
+                <TextBlock x:Name="textUserName" Grid.Column="0" Grid.Row="0" Margin="0" TextAlignment="Center"  TextWrapping="Wrap" HorizontalAlignment="Right">New User</TextBlock>
+                <TextBlock x:Name="textMisteke" Grid.Column="0" Grid.Row="1" Margin="0" TextAlignment="Center"  TextWrapping="Wrap" HorizontalAlignment="Right">0</TextBlock>
+                <TextBlock x:Name="textСorrectAnswer" Grid.Column="0" Grid.Row="2" Margin="0" TextAlignment="Center"  TextWrapping="Wrap" HorizontalAlignment="Right" >0</TextBlock>
             </Grid>
 
-            <TextBlock x:Name="textRus" Grid.Column="0" Grid.Row="0" Margin="10" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Center">Click start</TextBlock>
-            <Button x:Name="butStart" Margin="15" Grid.Row="3" Click="butAnswer_Click" Background="Blue" Width="150" Height="50" FontSize="36">Start</Button>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="3.5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+
+
+
+                <Grid Grid.Row="1" x:Name="buttonsInGrid">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="butAnswer1" Margin="15" Grid.Column="0" Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+                    <Button x:Name="butAnswer2" Margin="15" Grid.Column="2"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+                    <Button x:Name="butAnswer3" Margin="15" Grid.Column="4"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+
+                </Grid>
+                <Grid Grid.Row="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="butAnswer4" Margin="15" Grid.Column="1"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+                    <Button x:Name="butAnswer5" Margin="15" Grid.Column="3"  Grid.ColumnSpan="2" Click="butAnswer_Click" FontSize="20"></Button>
+                </Grid>
+
+                <TextBlock x:Name="textRus" Grid.Column="0" Grid.Row="0" Margin="10" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Center">Click start</TextBlock>
+                <Button x:Name="butStart" Margin="15" Grid.Row="3" Click="butAnswer_Click" Background="Blue" Width="150" Height="50" FontSize="36">Start</Button>
+            </Grid>
         </Grid>
     </Grid>
-
 
 
 

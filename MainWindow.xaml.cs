@@ -151,7 +151,7 @@ namespace technical_verbs
             sr.WriteLine($"{mistakeAnswer}");
 
             sr.Close();
-            MessageBox.Show($"{textUserName.Text}.vbdata сохранен");
+            MessageBox.Show($"Profile {textUserName.Text} save");
 
         }
 
@@ -170,6 +170,8 @@ namespace technical_verbs
                     textUserName.Text = sr.ReadLine();
                     corectAnswer = int.Parse(sr.ReadLine());
                     mistakeAnswer = int.Parse(sr.ReadLine());
+                    textMisteke.Text = mistakeAnswer.ToString();
+                    textСorrectAnswer.Text = corectAnswer.ToString();
                 }
                 catch (Exception)
                 {
@@ -178,6 +180,12 @@ namespace technical_verbs
 
             }
             
+        }
+
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            saveFile_Click(sender, e);
+            this.Close();
         }
     }
 }
