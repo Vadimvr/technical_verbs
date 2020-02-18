@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="inputBox.xaml">
+    <Page Include="bl\inputBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,7 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="inputBox.xaml.cs">
+    <Compile Include="bl\inputBox.xaml.cs">
       <DependentUpon>inputBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
