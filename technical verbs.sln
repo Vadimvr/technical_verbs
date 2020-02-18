@@ -7,12 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "technical verbs", "technica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data", "data\data.csproj", "{8AE7139D-E38F-466A-8C9A-F0B4D9731C2F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bl", "bl", "{D030D4EA-D7FF-4FF5-8C47-D542D205E093}"
-	ProjectSection(SolutionItems) = preProject
-		inputBox.xaml = inputBox.xaml
-		inputBox.xaml.cs = inputBox.xaml.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,9 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{8AE7139D-E38F-466A-8C9A-F0B4D9731C2F} = {D030D4EA-D7FF-4FF5-8C47-D542D205E093}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C631E12-CE41-475D-84C9-6D1315992735}
