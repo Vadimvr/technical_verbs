@@ -69,7 +69,7 @@
                     <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    
                 </Grid.RowDefinitions>
 
 
@@ -109,7 +109,6 @@
 
                 <TextBlock x:Name="textRus" Grid.Column="0" Grid.Row="0" Margin="10" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Center">Click start</TextBlock>
                 <Button x:Name="butStart" Margin="15" Grid.Row="3" Click="butAnswer_Click" Background="Blue" Width="150" Height="50" FontSize="36">Start</Button>
-                <Button x:Name="butStartwin" Margin="15" Grid.Row="4" Click="credeUser_Click"  Background="Blue" Width="150" Height="50" FontSize="36">Start window</Button>
             </Grid>
         </Grid>
     </Grid>
