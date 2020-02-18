@@ -22,50 +22,68 @@ namespace technical_verbs
 
     public partial class MainWindow : Window
     {
+        
         string answer;
         bool start = false;
-        bool correctAnswer;
+
+        int corectAnswer = 0;
+        int mistakeAnswer = 0;
+
         List<Button> buttons1 = new List<Button>();
         public MainWindow()
         {
             InitializeComponent();
             buttons1 = new List<Button> { butAnswer1, butAnswer2, butAnswer3, butAnswer4, butAnswer5};
+            List<TextBlock> ansverMistekeAndCorect = new List<TextBlock> { textMisteke, textСorrectAnswer };
         }
-        
-        
 
-   
+
+
+
 
         private void butAnswer_Click(object sender, RoutedEventArgs e)
         {
-            if(((Button)sender).Name == butStart.Name )
-            {
-                if (!start)
+                if (((Button)sender).Name == butStart.Name)
                 {
-                    start = true;
-                    butStart.Content = "Next";
-                }
+                    if (!start)
+                    {
+                        start = true;
+                        butStart.Content = "Next";
+                    }
 
-                ButtonContext();
-                butStart.IsEnabled = false;
-                ((Button)sender).Background = Brushes.Red;
-               
-            }
-            else
-            {
-                if (((Button)sender).Content == answer && start)
-                {
-                    ((Button)sender).Background = Brushes.Green;
-                    butStart.Background = Brushes.Green;
-                    butStart.IsEnabled = true;
-                    
+                    ButtonContext();
+                    butStart.IsEnabled = false;
+                    ((Button)sender).Background = Brushes.Red;
+
                 }
                 else
-                    if(!butStart.IsEnabled && start)
-                        ((Button)sender).Background = Brushes.Red;
-            }
+                {
+                    if (start) {
+                        if (((Button)sender).Content.ToString() == answer)
+                        {
+                            ((Button)sender).Background = Brushes.Green;
+                            butStart.Background = Brushes.Green;
+                            butStart.IsEnabled = true;
+                           
+                            corectAnswer++;
 
-        }
+                            textСorrectAnswer.Text = corectAnswer.ToString();
+
+
+                        }
+                        else
+                        {
+                            if (!butStart.IsEnabled)
+
+                            {
+                                ((Button)sender).Background = Brushes.Red;
+                                mistakeAnswer++;
+                                textMisteke.Text = mistakeAnswer.ToString();
+                            }
+                        }
+                    }
+                }
+            }        
 
         public void ButtonContext()
         {

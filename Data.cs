@@ -19,7 +19,7 @@ namespace technical_verbs
             //new list<string>{ "7", "нажми 7" },
             //new list<string>{ "8", "нажми 8" },
             //new list<string>{ "9", "нажми 9" },
-            //new list<string>{ "10", "нажми 10" },
+            //new list<string>{ "10", "нажми 10"},
 
 
             ///
