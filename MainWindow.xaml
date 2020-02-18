@@ -19,8 +19,8 @@
                 <MenuItem Header="Exit" Click="MenuItemExit_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Setting">
-                <MenuItem Header="Cange name"></MenuItem>
-                <MenuItem Header="Cange name"></MenuItem>
+                <MenuItem Header="Start index"></MenuItem> !-- not work
+                <MenuItem Header="End index"></MenuItem> !-- not work
             </MenuItem>
         </Menu>
 
@@ -50,7 +50,7 @@
 
 
 
-               
+
 
                 <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">Ошибки</TextBlock>
                 <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">Правильные ответы</TextBlock>
@@ -66,6 +66,7 @@
                 <Grid.RowDefinitions>
 
                     <RowDefinition Height="3.5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
@@ -108,13 +109,8 @@
 
                 <TextBlock x:Name="textRus" Grid.Column="0" Grid.Row="0" Margin="10" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Center">Click start</TextBlock>
                 <Button x:Name="butStart" Margin="15" Grid.Row="3" Click="butAnswer_Click" Background="Blue" Width="150" Height="50" FontSize="36">Start</Button>
+                <Button x:Name="butStartwin" Margin="15" Grid.Row="4" Click="credeUser_Click"  Background="Blue" Width="150" Height="50" FontSize="36">Start window</Button>
             </Grid>
         </Grid>
     </Grid>
-
-
-
-
-
-
 </Window>

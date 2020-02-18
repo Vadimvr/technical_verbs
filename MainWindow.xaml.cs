@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 
+
 namespace technical_verbs
 {
     /// <summary>
@@ -130,12 +131,24 @@ namespace technical_verbs
 
         private void credeUser_Click(object sender, RoutedEventArgs e)
         {
-            if (!start)
-            {
-                textUserName.IsEnabled = true;
-               
-            }
+            IInputBox inputBox = new InputBox();
+            inputBox.InputBox_close += InputBox_InputBox_close;
+            inputBox.ShowIInputBox();
+            
+            
         }
+        #region event inpuBox
+        private void InputBox_InputBox_close(object sender, EventArgs e)
+        {
+            var a = (sender as IInputBox);
+            if (a != null)
+            {
+                textUserName.Text = a.NewUserName.Length > 1 ? a.NewUserName : textUserName.Text;
+                a.CloseIInputBox();
+            }
+            
+        }
+        #endregion
 
         private void saveFile_Click(object sender, RoutedEventArgs e)
         {
