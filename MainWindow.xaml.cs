@@ -40,10 +40,7 @@ namespace technical_verbs
             List<TextBlock> ansverMistekeAndCorect = new List<TextBlock> { textMisteke, textСorrectAnswer };
         }
 
-
-
-
-
+        #region проверка ответов
         private void butAnswer_Click(object sender, RoutedEventArgs e)
         {
             if (((Button)sender).Name == butStart.Name)
@@ -89,15 +86,17 @@ namespace technical_verbs
                 }
             }
         }
+        #endregion
 
+
+        #region текст на кнопках
         public void ButtonContext()
         {
             int x;
-            
             int[] randoms = new int[5];
             int temp = 0;
             Random rnd = new Random();
-            randoms[0] = rnd.Next(0, Data.data.Count-1);
+            randoms[0] = rnd.Next(0, Data.data.Count - 1);
             for (int i = 1; i < 5; i++)
             {
                 temp = rnd.Next(0, Data.data.Count - 1);
@@ -115,66 +114,47 @@ namespace technical_verbs
                     }
                 }
             }
-
             for (int i = 0; i < 5; i++)
             {
                 buttons1[i].Content = Data.data[randoms[i]][0];
                 buttons1[i].Background = Brushes.LightGray;
-
             }
             x = randoms[rnd.Next(0, 4)];
-
             answer = Data.data[x][0];
             textRus.Text = Data.data[x][1];
-
         }
+        #endregion
 
-        private void credeUser_Click(object sender, RoutedEventArgs e)
+
+        #region Menu
+        private void CredeUser_Click(object sender, RoutedEventArgs e)
         {
             IInputBox inputBox = new InputBox();
             inputBox.InputBox_close += InputBox_InputBox_close;
             inputBox.ShowIInputBox();
-            
-            
         }
-        #region event inpuBox
-        private void InputBox_InputBox_close(object sender, EventArgs e)
-        {
-            var a = (sender as IInputBox);
-            if (a != null)
-            {
-                textUserName.Text = a.NewUserName.Length > 1 ? a.NewUserName : textUserName.Text;
-                a.CloseIInputBox();
-            }
-            
-        }
-        #endregion
 
-        private void saveFile_Click(object sender, RoutedEventArgs e)
+        private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
             string mydocu = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\";
             if (!Directory.Exists(mydocu))
                 Directory.CreateDirectory(mydocu);
-
             mydocu += $"{textUserName.Text}.vbdata";
             StreamWriter sr = File.CreateText(mydocu);
-
             sr.WriteLine($"{textUserName.Text}");
             sr.WriteLine($"{corectAnswer}");
             sr.WriteLine($"{mistakeAnswer}");
-
             sr.Close();
             MessageBox.Show($"Profile {textUserName.Text} save");
-
         }
 
-        private void openFile_Click(object sender, RoutedEventArgs e)
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
             string filePath;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "vbdata files(*.vbdata) | *.vbdata";
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\";
-            if (ofd.ShowDialog()== true)
+            if (ofd.ShowDialog() == true)
             {
                 filePath = ofd.FileName;
                 StreamReader sr = File.OpenText(filePath);
@@ -190,16 +170,29 @@ namespace technical_verbs
                 {
                     MessageBox.Show("Фаил поврежден");
                 }
+            }
+        }
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFile_Click(sender, e);
+            this.Close();
+        }
+        #endregion
 
+
+        #region event inpuBox
+        private void InputBox_InputBox_close(object sender, EventArgs e)
+        {
+            var a = (sender as IInputBox);
+            if (a != null)
+            {
+                textUserName.Text = a.NewUserName.Length > 1 ? a.NewUserName : textUserName.Text;
+                a.CloseIInputBox();
             }
             
         }
+        #endregion
 
-        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
-        {
-            saveFile_Click(sender, e);
-            this.Close();
-        }
     }
 }
 
