@@ -25,19 +25,20 @@ namespace technical_verbs
 
     public partial class MainWindow : Window
     {
-
+        Button buttonttEMP;
         string answer;
         bool start = false;
 
         int corectAnswer = 0;
         int mistakeAnswer = 0;
+        Style style = new Style();
 
         List<Button> buttons1 = new List<Button>();
         public MainWindow()
         {
             InitializeComponent();
             buttons1 = new List<Button> { butAnswer1, butAnswer2, butAnswer3, butAnswer4, butAnswer5 };
-            List<TextBlock> ansverMistekeAndCorect = new List<TextBlock> { textMisteke, textСorrectAnswer };
+            //List<TextBlock> ansverMistekeAndCorect = new List<TextBlock> { textMisteke, textСorrectAnswer };
         }
 
         #region проверка ответов
@@ -51,27 +52,21 @@ namespace technical_verbs
                     butStart.Content = "Next";
                     textUserName.IsEnabled = false;
                 }
-
                 ButtonContext();
                 butStart.IsEnabled = false;
                 ((Button)sender).Background = Brushes.Red;
-
             }
             else
             {
                 if (start)
                 {
-                    if (((Button)sender).Content.ToString() == answer)
+                    if ((sender as Button).Content.ToString() == answer)
                     {
                         ((Button)sender).Background = Brushes.Green;
                         butStart.Background = Brushes.Green;
                         butStart.IsEnabled = true;
-
                         corectAnswer++;
-
                         textСorrectAnswer.Text = corectAnswer.ToString();
-
-
                     }
                     else
                     {
