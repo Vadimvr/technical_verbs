@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:technical_verbs"
         mc:Ignorable="d"
-        Title="inputBox" Height="157" Width="279">
+        Title="inputBox" Height="200" Width="279">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -16,11 +17,26 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="30" Grid.Column="0" Grid.Row="1" Text="Enter name" VerticalAlignment="Center" FontSize="16"></TextBlock>
-        <TextBox x:Name="user_name" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="16" >New user</TextBox>
-       
-        <Button x:Name="Ok_button" Grid.Column="1" Grid.Row="2" Content="OK" Margin="10" Click="Ok_button_Click"></Button>
-        <Button x:Name="Close_button" Grid.Column="2" Grid.Row="2" Content="Cancel" Margin="10" Click="Ok_button_Click"></Button>
+        <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Center" FontSize="16">Enter name</TextBlock>
+        <TextBox x:Name="user_name" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" FontSize="16" >New user</TextBox>
+        <TextBlock Grid.ColumnSpan="30" Grid.Column="0" Grid.Row="1" Text="Start index" VerticalAlignment="Center" FontSize="14"></TextBlock>
+        <TextBlock Grid.ColumnSpan="30" Grid.Column="0" Grid.Row="2" Text="Lost index" VerticalAlignment="Center" FontSize="14"></TextBlock>
+        <TextBox x:Name="start_index" Grid.Column="2" Grid.Row="1"  VerticalAlignment="Center"  FontSize="16" TextAlignment="Center" >0</TextBox>
+        <TextBox x:Name="last_index" Grid.Column="2" Grid.Row="2"   VerticalAlignment="Center" FontSize="16" TextAlignment="Center" >5</TextBox>
+
+        <RepeatButton    x:Name="plus_start_index" Grid.Column="1" Grid.Row="1" Content="&lt;" Click="Index_Click"
+                Width="15" Height="30" Margin="2"  FontSize="16" HorizontalAlignment="Right"></RepeatButton>
+        <RepeatButton x:Name="plus_lost_index" Grid.Column="1" Grid.Row="2" Content="&lt;"    Click="Index_Click"
+                Width="15" Height="30" Margin="2"  FontSize="16" HorizontalAlignment="Right"></RepeatButton>
+        <RepeatButton x:Name="minus_start_index" Grid.Column="3" Grid.Row="1" Content="&gt;"    Click="Index_Click"
+                Width="15" Height="30" Margin="2"  FontSize="16" HorizontalAlignment="Left"></RepeatButton>
+        <RepeatButton x:Name="minus_lost_index" Grid.Column="3" Grid.Row="2" Content="&gt;"    Click="Index_Click"
+                Width="15" Height="30" Margin="2"  FontSize="16" HorizontalAlignment="Left"></RepeatButton>
+
+
+        <Button x:Name="Ok_button" Grid.Column="2" Grid.Row="3" Content="OK" Margin="10" Click="Ok_button_Click"></Button>
+        <Button x:Name="Close_button" Grid.Column="3" Grid.Row="3" Content="Cancel" Margin="10" Click="Ok_button_Click"></Button>
     </Grid>
 </Window>
