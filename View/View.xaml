@@ -1,0 +1,210 @@
+﻿<Window
+    x:Class="technical_verbs.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:technical_verbs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view_model="clr-namespace:ViewModel"
+    Title="TestApp"
+    Width="800"
+    Height="500"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <view_model:ViewModel />
+    </Window.DataContext>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu Height="19">
+            <MenuItem Header="Menu">
+                <MenuItem Click="CredeUser_Click" Header="Setting" />
+                <MenuItem Click="OpenFile_Click" Header="Open profile" />
+                <MenuItem Click="SaveFile_Click" Header="Save profile" />
+                <MenuItem Click="MenuItemExit_Click" Header="Exit" />
+            </MenuItem>
+            <!--<MenuItem Header="Setting">
+                <MenuItem Header="Start index" />
+                not work
+                <MenuItem Header="End index" />
+                not work
+            </MenuItem>-->
+        </Menu>
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="150" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left">
+                    Ошибки
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left">
+                    Правильные ответы
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left">
+                    Имя
+                </TextBlock>
+
+                <TextBlock
+                    x:Name="textUserName"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    New User
+                </TextBlock>
+                <TextBlock
+                    x:Name="textMisteke"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    0
+                </TextBlock>
+                <TextBlock
+                    x:Name="textСorrectAnswer"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    0
+                </TextBlock>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="3.5*" />
+                    <RowDefinition Height="4*" />
+
+                    <RowDefinition Height="2*" />
+
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="buttonsInGrid" Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button
+                        x:Name="butAnswer1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="15"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                        FontSize="20" />
+                    <Button
+                        x:Name="butAnswer2"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Margin="15"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                        FontSize="20" />
+                    <Button
+                        x:Name="butAnswer3"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Margin="15"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                        FontSize="20" />
+                    <Button
+                        x:Name="butAnswer4"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Margin="15"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                        FontSize="20" />
+                    <Button
+                        x:Name="butAnswer5"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        Margin="15"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+                        FontSize="20" />
+                </Grid>
+
+
+                <TextBlock
+                    x:Name="textRus"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    Click start
+                </TextBlock>
+                <Button
+                    x:Name="butStart"
+                    Grid.Row="3"
+                    Width="150"
+                    Height="50"
+                    Margin="15"
+                    Background="Blue"
+                    Click="butAnswer_Click"
+                    FontSize="36">
+                    Start
+                </Button>
+
+                <!--<Button x:Name="TEST" Margin="15" Grid.Row="3" Click="CredeUser_Click" Background="Blue" Width="150" Height="50" FontSize="36" HorizontalAlignment="Left">test</Button>-->
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
