@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:technical_verbs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:test_app.Model"
     xmlns:view_model="clr-namespace:ViewModel"
     Title="TestApp"
     Width="800"
@@ -12,6 +13,7 @@
     mc:Ignorable="d">
     <Window.DataContext>
         <view_model:ViewModel />
+
     </Window.DataContext>
 
 
@@ -20,20 +22,20 @@
             <RowDefinition Height="18" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Menu Height="19">
+        <!--<Menu Height="19">
             <MenuItem Header="Menu">
                 <MenuItem Click="CredeUser_Click" Header="Setting" />
                 <MenuItem Click="OpenFile_Click" Header="Open profile" />
                 <MenuItem Click="SaveFile_Click" Header="Save profile" />
                 <MenuItem Click="MenuItemExit_Click" Header="Exit" />
             </MenuItem>
-            <!--<MenuItem Header="Setting">
+            <MenuItem Header="Setting">
                 <MenuItem Header="Start index" />
                 not work
                 <MenuItem Header="End index" />
                 not work
-            </MenuItem>-->
-        </Menu>
+            </MenuItem>
+        </Menu>-->
 
         <Grid Grid.Row="1">
 
@@ -61,21 +63,18 @@
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="0"
-                    HorizontalAlignment="Left">
-                    Ошибки
-                </TextBlock>
+                    HorizontalAlignment="Left"
+                    Text="Ошибки" />
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"
-                    HorizontalAlignment="Left">
-                    Правильные ответы
-                </TextBlock>
+                    HorizontalAlignment="Left"
+                    Text="Правильные ответы" />
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="0"
-                    HorizontalAlignment="Left">
-                    Имя
-                </TextBlock>
+                    HorizontalAlignment="Left"
+                    Text="Имя" />
 
                 <TextBlock
                     x:Name="textUserName"
@@ -83,43 +82,40 @@
                     Grid.Column="0"
                     Margin="0"
                     HorizontalAlignment="Right"
+                    Text="New User"
                     TextAlignment="Center"
-                    TextWrapping="Wrap">
-                    New User
-                </TextBlock>
+                    TextWrapping="Wrap" />
                 <TextBlock
                     x:Name="textMisteke"
                     Grid.Row="1"
                     Grid.Column="0"
                     Margin="0"
                     HorizontalAlignment="Right"
+                    Text="{Binding Mistakes}"
                     TextAlignment="Center"
-                    TextWrapping="Wrap">
-                    0
-                </TextBlock>
+                    TextWrapping="Wrap" />
                 <TextBlock
                     x:Name="textСorrectAnswer"
                     Grid.Row="2"
                     Grid.Column="0"
                     Margin="0"
                     HorizontalAlignment="Right"
+                    Text="{Binding CorectAnswer}"
                     TextAlignment="Center"
-                    TextWrapping="Wrap">
-                    0
-                </TextBlock>
+                    TextWrapping="Wrap" />
             </Grid>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
 
                     <RowDefinition Height="3.5*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="5*" />
 
-                    <RowDefinition Height="2*" />
+
 
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="buttonsInGrid" Grid.Row="1">
+                <Grid Grid.Row="1">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -132,75 +128,87 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
-
-                    <Button
-                        x:Name="butAnswer1"
+                    <model:ButtonProperties 
+                        Margin="10"
                         Grid.Column="0"
+                        Grid.Row="0"
                         Grid.ColumnSpan="2"
-                        Margin="15"
                         Command="{Binding CheckForTheCorrectAnswer}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                        FontSize="20" />
+
+                        Content="{Binding ContentButton}"
+                        />
+                    <model:ButtonProperties 
+                        Margin="10"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        
+                        Content="{Binding ContentButton[NumberButton]}"
+                        />
+                    <model:ButtonProperties 
+                        Margin="10"
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        
+                        Content="{Binding ContentButton[NumberButton]}"
+                        />
+                    <model:ButtonProperties 
+                        Margin="10"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        
+                        Content="{Binding ContentButton[NumberButton]}"
+                        />
+                    <model:ButtonProperties 
+                        Margin="10"
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        
+                        Content="{Binding ContentButton[NumberButton]}"
+                        />
+                    <model:ButtonProperties 
+                        Margin="10"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding CheckForTheCorrectAnswer}"
+                        
+                        Content="{Binding ContentButton[NumberButton]}"
+                        />
+
+                    <!--  start button  -->
                     <Button
-                        x:Name="butAnswer2"
+                        Grid.Row="2"
                         Grid.Column="2"
                         Grid.ColumnSpan="2"
                         Margin="15"
-                        Command="{Binding CheckForTheCorrectAnswer}"
+                        Command="{Binding NewQuestion}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                        FontSize="20" />
-                    <Button
-                        x:Name="butAnswer3"
-                        Grid.Column="4"
-                        Grid.ColumnSpan="2"
-                        Margin="15"
-                        Command="{Binding CheckForTheCorrectAnswer}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                        FontSize="20" />
-                    <Button
-                        x:Name="butAnswer4"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        Margin="15"
-                        Command="{Binding CheckForTheCorrectAnswer}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                        FontSize="20" />
-                    <Button
-                        x:Name="butAnswer5"
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        Grid.ColumnSpan="2"
-                        Margin="15"
-                        Command="{Binding CheckForTheCorrectAnswer}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                        FontSize="20" />
+                        Content="Start"
+                        FontSize="20"
+                        IsEnabled="{Binding Start}" />
                 </Grid>
 
 
                 <TextBlock
-                    x:Name="textRus"
                     Grid.Row="0"
                     Grid.Column="0"
                     Margin="10"
                     VerticalAlignment="Center"
                     FontSize="30"
+                    Text="{Binding Question}"
                     TextAlignment="Center"
-                    TextWrapping="Wrap">
-                    Click start
-                </TextBlock>
-                <Button
-                    x:Name="butStart"
-                    Grid.Row="3"
-                    Width="150"
-                    Height="50"
-                    Margin="15"
-                    Background="Blue"
-                    Click="butAnswer_Click"
-                    FontSize="36">
-                    Start
-                </Button>
+                    TextWrapping="Wrap" />
+
 
                 <!--<Button x:Name="TEST" Margin="15" Grid.Row="3" Click="CredeUser_Click" Background="Blue" Width="150" Height="50" FontSize="36" HorizontalAlignment="Left">test</Button>-->
 

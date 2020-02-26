@@ -70,7 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ButtonProperties.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="NotWork\ViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="Model\inputBox.xaml">
@@ -131,5 +133,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

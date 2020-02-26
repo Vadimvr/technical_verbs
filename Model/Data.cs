@@ -6,10 +6,52 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public static class Data
+    public  class Data
     {
+        private  string[] contentButton = new string[5];
+        public string CorectAnswer { get; set; }
+        public string Question { get; set; }
+        public  string[] ContentButton { get => contentButton; set => contentButton = value; }
+        public string[] NewQuestionContext(int startIndex, int lastIndex)
+        {
+            if (lastIndex <= data.Count && startIndex >= 0 && lastIndex - startIndex >= 5)
+            {
+                int x = Data.data.Count;
+                int[] randoms = new int[5];
+                int temp = 0;
+                Random rnd = new Random();
+                randoms[0] = rnd.Next(startIndex, lastIndex);
+
+                for (int i = 1; i < 5; i++)
+                {
+                    temp = rnd.Next(startIndex, lastIndex);
+
+                    for (int j = 0; j <= i; j++)
+                    {
+                        if (j == i)
+                        {
+                            randoms[i] = temp;
+
+                        }
+                        else if (randoms[j] == temp)
+                        {
+                            i--; break;
+                        }
+                    }
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    ContentButton[i] = data[randoms[i]][0];
+
+                }
+                x = randoms[rnd.Next(0, 4)];
+                CorectAnswer = data[x][0];
+                Question = data[x][1];
+            }
+            return contentButton;
+        }
         //// test
-        public static List<List<string>> data = new List<List<string>>
+        static List<List<string>> data = new List<List<string>>
         {
             new List<string>{ "1", "нажми 1" },
             new List<string>{ "2", "нажми 2" },
@@ -537,7 +579,7 @@ namespace Model
         //    new List<string>{"zip", "застегивать на молнию; быстро нестись, лететь сквозь, через / вдоль: (through / along:)" },
         //    new List<string>{"zoom in", "увеличивать изображение, показывать крупным планом (фото) (on:)" },
         //    new List<string>{"zoom out", "уменьшать изображение (фото) (on:)" }
-       // };
+        // };
 
     }
 }
