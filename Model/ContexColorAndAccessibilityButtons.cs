@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace test_app.Model
+namespace Model
 {
     public class ContexColorAndAccessibilityButtons : INotifyPropertyChanged
     {

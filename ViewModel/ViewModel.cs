@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using test_app.Model;
+
 
 
 namespace ViewModel
@@ -21,7 +21,7 @@ namespace ViewModel
         private string question = "Click Start";
         private int numberOfCorrectAnswers;
         private int numberOfIncorrectAnswersr;
-        public Data data = new Data();
+        public QuestionsAndAnswerOptions data = new QuestionsAndAnswerOptions();
         private List<ContexColorAndAccessibilityButtons> listWithParametersByDisplayingTheButtons = new List<ContexColorAndAccessibilityButtons> {
         new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
         new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
@@ -111,7 +111,7 @@ namespace ViewModel
 
         #region method for setting the text in buttons 
 
-        void SettingButtonontext(Data _data)
+        void SettingButtonontext(QuestionsAndAnswerOptions _data)
         {
             _data.NewQuestionContext(0, _data.LenghtList);
             ContexColorAndAccessibilityButtons.Answer = _data.CorectAnswer;

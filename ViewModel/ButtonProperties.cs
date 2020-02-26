@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace test_app.Model
+namespace ViewModel
 {
     class ButtonProperties : Button
     {
