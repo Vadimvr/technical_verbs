@@ -20,7 +20,7 @@
 //        bool vin = false;
 //        bool defaulButoon;
 //        private RelayCommand checkForTheCorrectAnswer;
-//        private RelayCommand newQuestion;
+//        private RelayCommand newQuestionAndStartTest;
 //        private string question = "Click start";
 //        private int corectAnswer;
 //        private int mistakes;
@@ -87,12 +87,12 @@
 
 
 
-//        public RelayCommand NewQuestion
+//        public RelayCommand NewQuestionAndStartTest
 //        {
 //            get
 //            {
-//                return newQuestion ??
-//                  (newQuestion = new RelayCommand(obj =>
+//                return newQuestionAndStartTest ??
+//                  (newQuestionAndStartTest = new RelayCommand(obj =>
 //                  {
 //                      Button but = obj as Button;
 

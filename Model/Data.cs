@@ -8,11 +8,12 @@ namespace Model
 {
     public  class Data
     {
+        public int LenghtList { get => data.Count; }
         private  string[] contentButton = new string[5];
         public string CorectAnswer { get; set; }
         public string Question { get; set; }
         public  string[] ContentButton { get => contentButton; set => contentButton = value; }
-        public string[] NewQuestionContext(int startIndex, int lastIndex)
+        public void NewQuestionContext(int startIndex, int lastIndex)
         {
             if (lastIndex <= data.Count && startIndex >= 0 && lastIndex - startIndex >= 5)
             {
@@ -48,7 +49,7 @@ namespace Model
                 CorectAnswer = data[x][0];
                 Question = data[x][1];
             }
-            return contentButton;
+            
         }
         //// test
         static List<List<string>> data = new List<List<string>>

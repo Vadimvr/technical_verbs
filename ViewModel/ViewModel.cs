@@ -11,51 +11,39 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using test_app.Model;
 
+
 namespace ViewModel
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        
-        private string[] contentButton = new string[5];
-        Data data = new Data();
-        bool start = true;
-        bool vin = false;
-        bool defaulButoon;
+        #region Fileds
+        private ContexColorAndAccessibilityButtons buttonStart = new ContexColorAndAccessibilityButtons("Start", true, Brushes.LightGray);
+        private string question = "Click Start";
+        private int numberOfCorrectAnswers;
+        private int numberOfIncorrectAnswersr;
+        public Data data = new Data();
+        private List<ContexColorAndAccessibilityButtons> listWithParametersByDisplayingTheButtons = new List<ContexColorAndAccessibilityButtons> {
+        new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
+        new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
+        new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
+        new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
+        new ContexColorAndAccessibilityButtons ("", false, Brushes.LightGray),
+        };
+
+        private RelayCommand newQuestionAndStartTest;
         private RelayCommand checkForTheCorrectAnswer;
-        private RelayCommand newQuestion;
-        private string question = "Click start";
-        private int corectAnswer;
-        private int mistakes;
-        private SolidColorBrush colorButoonCorectAnswer = Brushes.Green;
-        private SolidColorBrush colorButoonNotCorectAnswer = Brushes.Red;
-        private SolidColorBrush colorButoonDefault = Brushes.LightGray;
-        public bool DefaulButoon { get => defaulButoon; set { defaulButoon = value; OnPropertyChanged("DefaulButoon"); } }
-        public string Answer { get; set; }
-        public string[] ContentButton
-        {
-            get => contentButton;
-            set
-            {
-                contentButton = value;
-                Question = data.Question;
-                Answer = data.CorectAnswer;
-                OnPropertyChanged("ContentButton");
-            }
-        }
+        #endregion
 
-        public bool Start { get => start; set { start = value; OnPropertyChanged("Start"); } }
-        public Data ContentData { get => data; set { data = value; OnPropertyChanged("Data"); } }
-
-        public bool Vin { get => vin; set { vin = value; OnPropertyChanged("Vin"); } }
-        public int CorectAnswer { get => corectAnswer; set { corectAnswer = value; OnPropertyChanged("CorectAnswer"); } }
-        public int Mistakes { get => mistakes; set { mistakes = value; OnPropertyChanged("Mistakes"); } }
+        #region properties 
+        public ContexColorAndAccessibilityButtons ButtonStart { get => buttonStart; set { buttonStart = value; OnPropertyChanged("ButtonStart"); } }
         public string Question { get => question; set { question = value; OnPropertyChanged("Question"); } }
-        public SolidColorBrush ColorButoonCorectAnswer { get => colorButoonCorectAnswer; set => colorButoonCorectAnswer = value; }
-        public SolidColorBrush ColorButoonNotCorectAnswer { get => colorButoonNotCorectAnswer; set => colorButoonNotCorectAnswer = value; }
-        public SolidColorBrush ColorButoonDefault { get => colorButoonDefault; set { colorButoonDefault = value; } }
+        public int NumberOfCorrectAnswers { get => numberOfCorrectAnswers; set { numberOfCorrectAnswers = value; OnPropertyChanged("NumberOfCorrectAnswers"); } }
+        public int NumberOfIncorrectAnswersr { get => numberOfIncorrectAnswersr; set { numberOfIncorrectAnswersr = value; OnPropertyChanged("NumberOfIncorrectAnswersr"); } }
 
+        public List<ContexColorAndAccessibilityButtons> ListWithParametersByDisplayingTheButtons { get => listWithParametersByDisplayingTheButtons; set { listWithParametersByDisplayingTheButtons = value; OnPropertyChanged("ListWithParametersByDisplayingTheButtons"); } }
+        #endregion
 
-
+        #region Commands
         public RelayCommand CheckForTheCorrectAnswer
         {
             get
@@ -63,49 +51,77 @@ namespace ViewModel
                 return checkForTheCorrectAnswer ??
                   (checkForTheCorrectAnswer = new RelayCommand(obj =>
                   {
-                      
-                      if (obj != null)
+                      ButtonProperties but = obj as ButtonProperties;
+                      if (ContexColorAndAccessibilityButtons.CorrektAnswer)
+                          Question = "Please click Next.";
+                      if (but != null && !ContexColorAndAccessibilityButtons.CorrektAnswer)
                       {
-                          MessageBox.Show(((ButtonProperties)obj).NumberButton.ToString());
+                          if (but != null && but.Content.ToString() == ContexColorAndAccessibilityButtons.Answer)
+                          {
+                              if (but.Background == Brushes.LightGray)
+                                  buttonStart.Correct++;
+                                  //NumberOfCorrectAnswers++;
+                              ListWithParametersByDisplayingTheButtons[but.NumberButton].ButtonColor = Brushes.Green;
+                              ContexColorAndAccessibilityButtons.CorrektAnswer = true;
+                              ButtonStart.ButtonIsEnable = !false;
+
+                          }
+                          else
+                          {
+                              if (but.Background == Brushes.LightGray)
+                                  buttonStart.Mistake++;
+                              // NumberOfIncorrectAnswersr++;
+
+                              ListWithParametersByDisplayingTheButtons[but.NumberButton].ButtonColor = Brushes.Red;
+                          }
                       }
+
                   }));
             }
-
         }
-
-
-
-        public RelayCommand NewQuestion
+        public RelayCommand NewQuestionAndStartTest
         {
             get
             {
-                return newQuestion ??
-                  (newQuestion = new RelayCommand(obj =>
+                return newQuestionAndStartTest ??
+                  (newQuestionAndStartTest = new RelayCommand(obj =>
                   {
                       Button but = obj as Button;
-
                       if (but != null)
                       {
-                          
-                          but.Content = "Next";
-                          Vin = true;
-                          Start = false;
-                          DefaulButoon = true;
-                          ContentButton = data.NewQuestionContext(0, 10);
+                          SettingButtonontext(data);
+                          ContexColorAndAccessibilityButtons.CorrektAnswer = false;
+                          ButtonStart.ButtonIsEnable = false;
+                          ButtonStart.ButtonColor = Brushes.Green;
+                          ButtonStart.Context = "Next";
                       }
                   }));
-
-
             }
         }
+        #endregion
 
-
+        #region PropertyChangedEventHandler
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        #endregion
 
+        #region method for setting the text in buttons 
+
+        void SettingButtonontext(Data _data)
+        {
+            _data.NewQuestionContext(0, _data.LenghtList);
+            ContexColorAndAccessibilityButtons.Answer = _data.CorectAnswer;
+            Question = _data.Question;
+            for (int i = 0; i < 5; i++)
+            {
+                ListWithParametersByDisplayingTheButtons[i].Default();
+                ListWithParametersByDisplayingTheButtons[i].Context = _data.ContentButton[i];
+            }
+        }
+        #endregion
     }
 }
