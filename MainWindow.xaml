@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Menu Height="19">
             <MenuItem Header="Menu">
-                <MenuItem Header="New user" Click="CredeUser_Click"></MenuItem>
+                <MenuItem Header="Setting" Click="CredeUser_Click"></MenuItem>
                 <MenuItem Header="Open profile" Click="OpenFile_Click"></MenuItem>
                 <MenuItem Header="Save profile" Click="SaveFile_Click"></MenuItem>
                 <MenuItem Header="Exit" Click="MenuItemExit_Click"></MenuItem>
@@ -99,6 +99,8 @@
 
                 <TextBlock x:Name="textRus" Grid.Column="0" Grid.Row="0" Margin="10" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Center">Click start</TextBlock>
                 <Button x:Name="butStart" Margin="15" Grid.Row="3" Click="butAnswer_Click" Background="Blue" Width="150" Height="50" FontSize="36">Start</Button>
+               
+                <!--<Button x:Name="TEST" Margin="15" Grid.Row="3" Click="CredeUser_Click" Background="Blue" Width="150" Height="50" FontSize="36" HorizontalAlignment="Left">test</Button>-->
 
             </Grid>
         </Grid>

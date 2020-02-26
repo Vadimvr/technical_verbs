@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-
+using Model;
 
 namespace technical_verbs
 {
@@ -25,25 +25,28 @@ namespace technical_verbs
 
     public partial class MainWindow : Window
     {
-        Button buttonttEMP;
+
+        int Last_index_int { get; set; }
+        int Start_index_int { get; set; }
         string answer;
         bool start = false;
-
         int corectAnswer = 0;
         int mistakeAnswer = 0;
-        Style style = new Style();
 
-        List<Button> buttons1 = new List<Button>();
+
+        List<Button> buttons1;
         public MainWindow()
         {
             InitializeComponent();
-            buttons1 = new List<Button> { butAnswer1, butAnswer2, butAnswer3, butAnswer4, butAnswer5 };
-            //List<TextBlock> ansverMistekeAndCorect = new List<TextBlock> { textMisteke, textСorrectAnswer };
+
+            Last_index_int = Data.data.Count;
         }
 
         #region проверка ответов
         private void butAnswer_Click(object sender, RoutedEventArgs e)
         {
+
+
             if (((Button)sender).Name == butStart.Name)
             {
                 if (!start)
@@ -51,6 +54,8 @@ namespace technical_verbs
                     start = true;
                     butStart.Content = "Next";
                     textUserName.IsEnabled = false;
+                    buttons1 = new List<Button> { butAnswer1, butAnswer2, butAnswer3, butAnswer4, butAnswer5 };
+                    Last_index_int = Data.data.Count;
                 }
                 ButtonContext();
                 butStart.IsEnabled = false;
@@ -84,17 +89,19 @@ namespace technical_verbs
         #endregion
 
 
-        #region текст на кнопках
+        #region Buttoms content
+
         public void ButtonContext()
         {
-            int x;
+            int x = Data.data.Count;
             int[] randoms = new int[5];
             int temp = 0;
             Random rnd = new Random();
-            randoms[0] = rnd.Next(0, Data.data.Count - 1);
+            randoms[0] = rnd.Next(Start_index_int, Last_index_int );
+
             for (int i = 1; i < 5; i++)
             {
-                temp = rnd.Next(0, Data.data.Count - 1);
+                temp = rnd.Next(Start_index_int, Last_index_int );
 
                 for (int j = 0; j <= i; j++)
                 {
@@ -124,8 +131,8 @@ namespace technical_verbs
         #region Menu
         private void CredeUser_Click(object sender, RoutedEventArgs e)
         {
-            IInputBox inputBox = new InputBox();
-            inputBox.InputBox_close += InputBox_InputBox_close;
+            IInputBox inputBox = new InputBox(Data.data.Count);
+            inputBox.InputBox_close += InputBox_close;
             inputBox.ShowIInputBox();
         }
 
@@ -175,21 +182,22 @@ namespace technical_verbs
         #endregion
 
 
-        #region event inpuBox
-        private void InputBox_InputBox_close(object sender, EventArgs e)
+        #region event InputBox
+        private void InputBox_close(object sender, EventArgs e)
         {
             var a = (sender as IInputBox);
             if (a != null)
             {
+                Last_index_int = a.Last_index;
+                Start_index_int = a.Start_index;
                 textUserName.Text = a.NewUserName.Length > 1 ? a.NewUserName : textUserName.Text;
                 a.CloseIInputBox();
             }
-            
+
         }
         #endregion
 
     }
 }
-
 
 
