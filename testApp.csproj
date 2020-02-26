@@ -72,7 +72,6 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\ButtonProperties.cs" />
     <Compile Include="Model\Data.cs" />
-    <Compile Include="NotWork\ViewModel.cs" />
     <Compile Include="Model\ContexColorAndAccessibilityButtons.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
