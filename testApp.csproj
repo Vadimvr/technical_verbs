@@ -82,6 +82,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="bl\Data.cs" />
     <Compile Include="bl\inputBox.xaml.cs">
       <DependentUpon>inputBox.xaml</DependentUpon>
     </Compile>
@@ -115,12 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="data\data.csproj">
-      <Project>{8ae7139d-e38f-466a-8c9a-f0b4d9731c2f}</Project>
-      <Name>data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
