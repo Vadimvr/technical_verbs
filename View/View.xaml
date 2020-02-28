@@ -14,6 +14,24 @@
     <Window.DataContext>
         <view_model:ViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="MyButtonStyle">
+            <Setter Property="Button.Margin" Value="10" />
+            <Setter Property="Button.IsEnabled" Value="{Binding ButtonIsEnable}" />
+            <Setter Property="Button.Command" Value="{Binding CheckForTheCorrectAnswer}" />
+            <Setter Property="Button.FontSize" Value="20" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+            <Setter Property="Button.FontSize" Value="20" />
+        </Style>
+        <Style x:Key="TextBlockStyle">
+            <Setter Property="TextBlock.Margin" Value="1" />
+            <Setter Property="TextBlock.FontSize" Value="12" />
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Right" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+        </Style>
+
+    </Window.Resources>
     <Grid>
         <!--#region  Grid-->
         <Grid.RowDefinitions>
@@ -53,133 +71,95 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left"
+            Style="{StaticResource TextBlockStyle}">
             Имя
         </TextBlock>
         <TextBlock
             Grid.Row="2"
             Grid.Column="0"
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left"
+            Style="{StaticResource TextBlockStyle}">
             Ошибки
         </TextBlock>
         <TextBlock
             Grid.Row="3"
             Grid.Column="0"
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left"
+            Style="{StaticResource TextBlockStyle}">
             Правильные ответы
         </TextBlock>
         <!--#region user name-->
         <TextBlock
-            x:Name="textUserName"
             Grid.Row="1"
             Grid.Column="0"
-            Margin="0"
-            HorizontalAlignment="Right"
-            Text="New User"
-            TextAlignment="Center"
-            TextWrapping="Wrap" />
+            Style="{StaticResource TextBlockStyle}"
+            Text="New User" />
         <!--#endregion-->
         <!--#region Mistake-->
         <TextBlock
-            x:Name="textMisteke"
             Grid.Row="2"
             Grid.Column="0"
-            Margin="0"
-            HorizontalAlignment="Right"
-            Text="{Binding ButtonStart.Mistake}"
-            TextAlignment="Center"
-            TextWrapping="Wrap" />
+            Style="{StaticResource TextBlockStyle}"
+            Text="{Binding ButtonStart.Mistake}" />
         <!--#endregion-->
         <!--#region Correct-->
 
         <TextBlock
-            x:Name="textСorrectAnswer"
             Grid.Row="3"
             Grid.Column="0"
-            Margin="0"
-            HorizontalAlignment="Right"
-            Text="{Binding ButtonStart.Correct}"
-            TextAlignment="Center"
-            TextWrapping="Wrap" />
+            Style="{StaticResource TextBlockStyle}"
+            Text="{Binding ButtonStart.Correct}" />
         <!--#endregion-->
 
         <!--#region Question-->
         <TextBlock
-            x:Name="textRus"
             Grid.Row="4"
             Grid.Column="0"
             Grid.ColumnSpan="6"
-            Margin="10"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="30"
-            Text="{Binding Question}"
-            TextAlignment="Center"
-            TextWrapping="Wrap" />
+            Style="{StaticResource TextBlockStyle}"
+            Text="{Binding Question}" />
         <!--#endregion-->
         <!--#endregion-->
         <!--#region answer buttons-->
         <Button
             Grid.Row="5"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            Command="{Binding CheckForTheCorrectAnswer}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="{Binding ContentButton[0]}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonIsEnable}" />
+            Style="{StaticResource MyButtonStyle}" />
 
         <Button
             Grid.Row="5"
             Grid.Column="2"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            Command="{Binding CheckForTheCorrectAnswer}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="{Binding ContentButton[1]}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonIsEnable}" />
+            Style="{StaticResource MyButtonStyle}" />
         <Button
             Grid.Row="5"
             Grid.Column="4"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            Command="{Binding CheckForTheCorrectAnswer}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="{Binding ContentButton[2]}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonIsEnable}" />
+            Style="{StaticResource MyButtonStyle}" />
         <Button
             Grid.Row="6"
             Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            Command="{Binding CheckForTheCorrectAnswer}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="{Binding ContentButton[3]}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonIsEnable}" />
+            Style="{StaticResource MyButtonStyle}" />
         <Button
             Grid.Row="6"
             Grid.Column="3"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            Command="{Binding CheckForTheCorrectAnswer}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="{Binding ContentButton[4]}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonIsEnable}" />
+            Style="{StaticResource MyButtonStyle}" />
         <!--#endregion-->
         <!--#region Button Start-->
         <Button
             Grid.Row="7"
             Grid.Column="2"
-            Grid.ColumnSpan="2"
-            Margin="10"
             Command="{Binding NewQuestionAndStartTest}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
             Content="Start"
-            FontSize="20" />
+            IsEnabled="True"
+            Style="{StaticResource MyButtonStyle}" />
         <!--#endregion-->
     </Grid>
 
