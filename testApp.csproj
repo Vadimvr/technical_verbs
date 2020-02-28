@@ -70,9 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ButtonList.cs" />
     <Compile Include="ViewModel\ButtonProperties.cs" />
     <Compile Include="Model\QuestionsAndAnswerOptions.cs" />
-    <Compile Include="Model\ContexColorAndAccessibilityButtons.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="Model\inputBox.xaml">

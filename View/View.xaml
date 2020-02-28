@@ -6,8 +6,6 @@
     xmlns:local="clr-namespace:technical_verbs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:ViewModel"
-   
-
     xmlns:view_model="clr-namespace:ViewModel"
     Title="TestApp"
     Width="800"
@@ -120,67 +118,57 @@
         <!--#endregion-->
         <!--#endregion-->
         <!--#region answer buttons-->
-      <model:ButtonProperties
-          Grid.Row="5"
+        <Button
+            Grid.Row="5"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ListWithParametersByDisplayingTheButtons[0].ButtonColor}"
             Command="{Binding CheckForTheCorrectAnswer}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ListWithParametersByDisplayingTheButtons[0].Context}"
+            Content="{Binding ContentButton[0]}"
             FontSize="20"
-            IsEnabled="{Binding ListWithParametersByDisplayingTheButtons[0].ButtonIsEnable}"
-            NumberButton="0" />
+            IsEnabled="{Binding ButtonIsEnable}" />
 
-        <model:ButtonProperties
+        <Button
             Grid.Row="5"
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ListWithParametersByDisplayingTheButtons[1].ButtonColor}"
             Command="{Binding CheckForTheCorrectAnswer}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ListWithParametersByDisplayingTheButtons[1].Context}"
+            Content="{Binding ContentButton[1]}"
             FontSize="20"
-            IsEnabled="{Binding ListWithParametersByDisplayingTheButtons[1].ButtonIsEnable}"
-            NumberButton="1" />
-        <model:ButtonProperties
+            IsEnabled="{Binding ButtonIsEnable}" />
+        <Button
             Grid.Row="5"
             Grid.Column="4"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ListWithParametersByDisplayingTheButtons[2].ButtonColor}"
             Command="{Binding CheckForTheCorrectAnswer}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ListWithParametersByDisplayingTheButtons[2].Context}"
+            Content="{Binding ContentButton[2]}"
             FontSize="20"
-            IsEnabled="{Binding ListWithParametersByDisplayingTheButtons[2].ButtonIsEnable}"
-            NumberButton="2" />
-        <model:ButtonProperties
+            IsEnabled="{Binding ButtonIsEnable}" />
+        <Button
             Grid.Row="6"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ListWithParametersByDisplayingTheButtons[3].ButtonColor}"
             Command="{Binding CheckForTheCorrectAnswer}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ListWithParametersByDisplayingTheButtons[3].Context}"
+            Content="{Binding ContentButton[3]}"
             FontSize="20"
-            IsEnabled="{Binding ListWithParametersByDisplayingTheButtons[3].ButtonIsEnable}"
-            NumberButton="3" />
-        <model:ButtonProperties
+            IsEnabled="{Binding ButtonIsEnable}" />
+        <Button
             Grid.Row="6"
             Grid.Column="3"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ListWithParametersByDisplayingTheButtons[4].ButtonColor}"
             Command="{Binding CheckForTheCorrectAnswer}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ListWithParametersByDisplayingTheButtons[4].Context}"
+            Content="{Binding ContentButton[4]}"
             FontSize="20"
-            IsEnabled="{Binding ListWithParametersByDisplayingTheButtons[4].ButtonIsEnable}"
-            NumberButton="4" />
+            IsEnabled="{Binding ButtonIsEnable}" />
         <!--#endregion-->
         <!--#region Button Start-->
         <Button
@@ -188,12 +176,10 @@
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Margin="10"
-            Background="{Binding ButtonStart.ButtonColor}"
             Command="{Binding NewQuestionAndStartTest}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding ButtonStart.Context}"
-            FontSize="20"
-            IsEnabled="{Binding ButtonStart.ButtonIsEnable}" />
+            Content="Start"
+            FontSize="20" />
         <!--#endregion-->
     </Grid>
 
