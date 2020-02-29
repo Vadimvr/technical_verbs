@@ -15,7 +15,7 @@ namespace ViewModel
     {
         #region Fileds
         ButtonList ContentAndcolors;
-       
+
         string[] contentButton;
         bool buttonIsEnable = false;
         private RelayCommand newQuestionAndStartTest;
@@ -27,14 +27,14 @@ namespace ViewModel
         #region properties
         public bool ButtonIsEnable { get => buttonIsEnable; set { buttonIsEnable = value; OnPropertyChanged("ButtonIsEnable"); } }
         public string[] ContentButton { get => contentButton; set { contentButton = value; OnPropertyChanged("ContentButton"); } }
-         public string Question { get => question; set {question = value; OnPropertyChanged("Question"); }}
+        public string Question { get => question; set { question = value; OnPropertyChanged("Question"); } }
 
 
 
-#endregion
+        #endregion
 
-#region Commands
-public RelayCommand CheckForTheCorrectAnswer
+        #region Commands
+        public RelayCommand CheckForTheCorrectAnswer
         {
             get
             {

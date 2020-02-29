@@ -156,10 +156,10 @@
         <Button
             Grid.Row="7"
             Grid.Column="2"
-            Command="{Binding NewQuestionAndStartTest}"
             Content="Start"
             IsEnabled="True"
-            Style="{StaticResource MyButtonStyle}" />
+            
+            Command="{Binding NewQuestionAndStartTest}" />
         <!--#endregion-->
     </Grid>
 
