@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Model
 {
@@ -52,6 +54,47 @@ namespace Model
             }
 
         }
+
+
+        public void NewQuestions( string path)
+        {
+            List<List<string>> newQuestions = new List<List<string>>();
+            try
+            {
+                StreamReader sr = File.OpenText(path);
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+
+                    int i = 0;
+                    for (; i < s.Length; i++)
+                    {
+                        if (s[i] == '\t')
+                        {
+
+                            break;
+                        }
+                    }
+                    string answer = s.Substring(0, i);
+                    string question = s.Substring(i, s.Length - i).Trim('\n', '\"', '\t').Trim();
+                    if (answer.Trim(' ', '\n') != "" && answer != null && question.Trim(' ', '\n') != "" && question != null)
+                    {
+                        newQuestions.Add(new List<string> { answer, question });
+                    }
+                }
+                if (newQuestions.Count > +5)
+                    data = newQuestions;
+                else
+                    MessageBox.Show(path + "\n не удалось добавить");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + path + "\n не удалось добавить\n\n " + ex);
+            }
+
+        }
+
         //// test
         static List<List<string>> data = new List<List<string>>
         {

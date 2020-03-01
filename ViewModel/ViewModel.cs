@@ -259,15 +259,14 @@ namespace ViewModel
                     string filePath;
                     OpenFileDialog ofd = new OpenFileDialog
                     {
-                        Filter = "questions files(*.txt) | *.All",
-                        InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\"
+                        // Not work  Filter = "txt files(*.txt) | *.txt | All files(*.*) | *.* " ,
+                        InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\",
+
                     };
                     if (ofd.ShowDialog() == true)
                     {
-                        
-                        
-                            MessageBox.Show("Невозможно открыть файл");
-                        
+
+                        Questions.NewQuestions(ofd.FileName);
                     }
                 }));
             }
