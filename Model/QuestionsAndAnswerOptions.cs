@@ -76,7 +76,7 @@ namespace Model
                         }
                     }
                     string answer = s.Substring(0, i);
-                    string question = s.Substring(i, s.Length - i).Trim('\n', '\"', '\t').Trim();
+                    string question = s.Substring(i, s.Length - i).Trim('\"', '\t').Trim();
                     if (answer.Trim(' ', '\n') != "" && answer != null && question.Trim(' ', '\n') != "" && question != null)
                     {
                         newQuestions.Add(new List<string> { answer, question });

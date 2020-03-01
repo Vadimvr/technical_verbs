@@ -250,6 +250,9 @@ namespace ViewModel
                 }));
             }
         }
+
+        #endregion
+        #region Open questions
         public RelayCommand OpenQuestions
         {
             get
