@@ -11,7 +11,7 @@ namespace ViewModel
 {
     class ButtonList
     {
-        private QuestionsAndAnswerOptions questionsAndAnswerOptions = new QuestionsAndAnswerOptions();
+        public QuestionsAndAnswerOptions Questions { get; set; }
         public int CorrectAnswerINT { get; set; }
         public int MistekeAnswerINT { get; set; }
         public string  Question { get; set; }
@@ -98,14 +98,14 @@ namespace ViewModel
                 }
             }
         }
-        public void NewRandomQuestion()
+        public void NewRandomQuestion(int start = 0, int end = 5)
         {
             ButtonStart.IsEnabled = false;
-            questionsAndAnswerOptions.NewQuestionContext(0, 10);
-            ContentButton = questionsAndAnswerOptions.ContentButton;
-            CorrectAnswer = questionsAndAnswerOptions.CorectAnswer;
+            Questions.NewQuestionContext(start, end);
+            ContentButton = Questions.ContentButton;
+            CorrectAnswer = Questions.CorectAnswer;
             ButtonIsDefault();
-            Question = questionsAndAnswerOptions.Question;
+            Question = Questions.Question;
         }
 
     }

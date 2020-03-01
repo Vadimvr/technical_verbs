@@ -8,11 +8,12 @@ namespace Model
 {
     public class QuestionsAndAnswerOptions
     {
-        public int LenghtList { get => data.Count; }
+        public int LenghtList { get => data.Count;  }
         private string[] contentButton = new string[5];
         public string CorectAnswer { get; set; }
         public string Question { get; set; }
         public string[] ContentButton { get => contentButton; set => contentButton = value; }
+       
         public void NewQuestionContext(int startIndex, int lastIndex)
         {
             if (lastIndex <= data.Count && startIndex >= 0 && lastIndex - startIndex >= 5)

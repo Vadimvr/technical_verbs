@@ -15,7 +15,7 @@
         <view_model:ViewModel />
     </Window.DataContext>
     <Window.Resources>
-
+        <!--#region Style MyButtonStyle-->
         <Style x:Key="MyButtonStyle">
             <Setter Property="Button.Margin" Value="10" />
             <Setter Property="Button.IsEnabled" Value="{Binding ButtonIsEnable}" />
@@ -25,6 +25,9 @@
             <Setter Property="Grid.ColumnSpan" Value="2" />
             <Setter Property="Button.FontSize" Value="20" />
         </Style>
+        <!--#endregion-->
+
+        <!--#region Style TextBlockStyle-->
         <Style x:Key="TextBlockStyle">
             <Setter Property="TextBlock.Margin" Value="1" />
             <Setter Property="TextBlock.FontSize" Value="12" />
@@ -32,6 +35,21 @@
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
         </Style>
+        <!--#endregion-->
+
+        <!--#region Style RepeatButton-->
+        <Style TargetType="RepeatButton">
+            <Setter Property="Command" Value="{Binding IndexChange}" />
+            <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
+            <Setter Property="Width" Value="15" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="Width" Value="15" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <!--#endregion-->
 
     </Window.Resources>
     <Grid>
@@ -55,20 +73,63 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--#endregion-->
-        <!--<Menu Height="19">
+        <Menu Grid.ColumnSpan="6" Height="19">
             <MenuItem Header="Menu">
-                <MenuItem Click="CredeUser_Click" Header="Setting" />
-                <MenuItem Click="OpenFile_Click" Header="Open profile" />
-                <MenuItem Click="SaveFile_Click" Header="Save profile" />
-                <MenuItem Click="MenuItemExit_Click" Header="Exit" />
+
+                <MenuItem Header="Open profile" />
+                <MenuItem Header="Save profile" />
+                <MenuItem Header="Exit" />
             </MenuItem>
             <MenuItem Header="Setting">
-                <MenuItem Header="Start index" />
-                not work
-                <MenuItem Header="End index" />
-                not work
+                <!--#region  Username-->
+                <MenuItem Header="User name">
+                    <StackPanel>
+                        <TextBox
+                            x:Name="UserName"
+                            Width="100"
+                            Text="New user" />
+                    </StackPanel>
+                </MenuItem>
+                <!--#endregion-->
+
+                <!--#region  Index count-->
+                <MenuItem Header="Start and end index ">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <RepeatButton x:Name="plus_start_index" Content="&lt;" />
+                            <TextBox
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Width="50"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding Start_index}"
+                                TextAlignment="Center" />
+
+                            <RepeatButton x:Name="minus_start_index" Content="&gt;" />
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <RepeatButton x:Name="plus_lost_index" Content="&lt;" />
+                            <TextBox
+                                x:Name="last_index"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Width="50"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding Last_index}"
+                                TextAlignment="Center" />
+
+                            <RepeatButton x:Name="minus_lost_index" Content="&gt;" />
+                        </StackPanel>
+                    </StackPanel>
+                </MenuItem>
+
+                <!--#endregion-->
+
             </MenuItem>
-        </Menu>-->
+        </Menu>
         <!--#region  Text block-->
         <TextBlock
             Grid.Row="1"
@@ -96,7 +157,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="New User" />
+            Text="{Binding ElementName=UserName, Path=Text}" />
         <!--#endregion-->
         <!--#region Mistake-->
         <TextBlock
