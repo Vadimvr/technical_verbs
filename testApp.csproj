@@ -71,7 +71,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ButtonList.cs" />
-    <Compile Include="ViewModel\ButtonProperties.cs" />
     <Compile Include="Model\QuestionsAndAnswerOptions.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />

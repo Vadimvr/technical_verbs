@@ -12,7 +12,8 @@ namespace ViewModel
     class ButtonList
     {
         private QuestionsAndAnswerOptions questionsAndAnswerOptions = new QuestionsAndAnswerOptions();
-
+        public int CorrectAnswerINT { get; set; }
+        public int MistekeAnswerINT { get; set; }
         public string  Question { get; set; }
         public string[] ContentButton { get; set; }
         public Button ButtonStart { get; set; }
@@ -61,11 +62,17 @@ namespace ViewModel
             if (ListButton[i].Content.ToString() == CorrectAnswer)
             {
                 ButtonStart.IsEnabled = true;
-                
+                if(ListButton[i].Background != Brushes.Green)
+                    CorrectAnswerINT++;
                 ListButton[i].Background = Brushes.Green;
             }
             else
-                ListButton[i].Background = Brushes.Red;
+            {
+                if (ListButton[i].Background != Brushes.Red)
+                    MistekeAnswerINT++;
+
+                    ListButton[i].Background = Brushes.Red;
+            }
         }
         /// <summary>
         ///  returns to its original state
@@ -79,6 +86,7 @@ namespace ViewModel
                 for (int i = 0; i < ListButton.Count; i++)
                 {
                     ListButton[i].Background = Brushes.LightGray;
+                   
                 }
             }
             else

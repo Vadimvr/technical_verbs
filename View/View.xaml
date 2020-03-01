@@ -15,10 +15,12 @@
         <view_model:ViewModel />
     </Window.DataContext>
     <Window.Resources>
+
         <Style x:Key="MyButtonStyle">
             <Setter Property="Button.Margin" Value="10" />
             <Setter Property="Button.IsEnabled" Value="{Binding ButtonIsEnable}" />
             <Setter Property="Button.Command" Value="{Binding CheckForTheCorrectAnswer}" />
+            <Setter Property="Button.CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
             <Setter Property="Button.FontSize" Value="20" />
             <Setter Property="Grid.ColumnSpan" Value="2" />
             <Setter Property="Button.FontSize" Value="20" />
@@ -101,7 +103,7 @@
             Grid.Row="2"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="{Binding ButtonStart.Mistake}" />
+            Text="{Binding CorrectAndMisteke[0]}" />
         <!--#endregion-->
         <!--#region Correct-->
 
@@ -109,7 +111,7 @@
             Grid.Row="3"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="{Binding ButtonStart.Correct}" />
+            Text="{Binding CorrectAndMisteke[1]}" />
         <!--#endregion-->
 
         <!--#region Question-->
@@ -156,10 +158,10 @@
         <Button
             Grid.Row="7"
             Grid.Column="2"
+            Command="{Binding NewQuestionAndStartTest}"
             Content="Start"
             IsEnabled="True"
-            
-            Command="{Binding NewQuestionAndStartTest}" />
+            Style="{StaticResource MyButtonStyle}" />
         <!--#endregion-->
     </Grid>
 

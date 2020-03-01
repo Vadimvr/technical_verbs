@@ -21,10 +21,16 @@ namespace ViewModel
         private RelayCommand newQuestionAndStartTest;
         private RelayCommand checkForTheCorrectAnswer;
         private string question;
+        int[] correctAndMisteke = new int[2];
 
         #endregion
 
+
+        
+
+
         #region properties
+        public int[] CorrectAndMisteke { get => correctAndMisteke; set { correctAndMisteke = value; OnPropertyChanged("CorrectAndMisteke"); } }
         public bool ButtonIsEnable { get => buttonIsEnable; set { buttonIsEnable = value; OnPropertyChanged("ButtonIsEnable"); } }
         public string[] ContentButton { get => contentButton; set { contentButton = value; OnPropertyChanged("ContentButton"); } }
         public string Question { get => question; set { question = value; OnPropertyChanged("Question"); } }
@@ -48,6 +54,7 @@ namespace ViewModel
                           if (but != null)
                           {
                               ContentAndcolors.AddButtonList(but);
+                              CorrectAndMisteke = new int[] { ContentAndcolors.MistekeAnswerINT, ContentAndcolors.CorrectAnswerINT };
                           }
                       }
 
@@ -68,6 +75,7 @@ namespace ViewModel
                           {
                               ContentAndcolors = new ButtonList(but);
                               ButtonIsEnable = true;
+                              CorrectAndMisteke = new int[] { 0, 0 };
                           }
 
                           ContentAndcolors.NewRandomQuestion();
@@ -79,6 +87,8 @@ namespace ViewModel
                   }));
             }
         }
+
+      
 
         #endregion
 
