@@ -76,18 +76,19 @@
         <Menu Grid.ColumnSpan="6" Height="19">
             <MenuItem Header="Menu">
 
-                <MenuItem Header="Open profile" />
-                <MenuItem Header="Save profile" />
-                <MenuItem Header="Exit" />
+                <MenuItem Header="Open profile" Command="{Binding OpenProfile}"/>
+                <MenuItem Header="Save profile" Command="{Binding SaveProfile}"/>
+                <MenuItem Header="Open questions" Command="{Binding OpenQuestions}"/>
+                <MenuItem Header="Exit"  />
             </MenuItem>
             <MenuItem Header="Setting">
                 <!--#region  Username-->
                 <MenuItem Header="User name">
                     <StackPanel>
                         <TextBox
-                            x:Name="UserName"
+                            x:Name="User_Name"
                             Width="100"
-                            Text="New user" />
+                            Text="{Binding UserName}" />
                     </StackPanel>
                 </MenuItem>
                 <!--#endregion-->
@@ -157,7 +158,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="{Binding ElementName=UserName, Path=Text}" />
+            Text="{Binding ElementName=User_Name, Path=Text}" />
         <!--#endregion-->
         <!--#region Mistake-->
         <TextBlock
