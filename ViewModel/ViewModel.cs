@@ -259,13 +259,13 @@ namespace ViewModel
             {
                 return openQuestions ?? (openQuestions = new RelayCommand(obj =>
                 {
-                    string filePath;
+                  
                     OpenFileDialog ofd = new OpenFileDialog
                     {
-                        // Not work  Filter = "txt files(*.txt) | *.txt | All files(*.*) | *.* " ,
+                        Filter = "Text Files(*.txt)|*.txt|All Files (*.*)|*.*",
                         InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\",
-
                     };
+                    
                     if (ofd.ShowDialog() == true)
                     {
 
