@@ -27,6 +27,7 @@ namespace ViewModel
         private RelayCommand newQuestionAndStartTest;
         private RelayCommand checkForTheCorrectAnswer;
         private RelayCommand saveProfile;
+        private RelayCommand exit;
         private RelayCommand openProfile;
         private RelayCommand indexСhange;
         private RelayCommand openQuestions;
@@ -35,7 +36,8 @@ namespace ViewModel
         int last_index_int;
         int start_index_int;
         string userName = "New User";
-
+        int mistekeAnswerINT;
+        int correctAnswerINT;
         #endregion
 
 
@@ -45,9 +47,13 @@ namespace ViewModel
         public QuestionsAndAnswerOptions Questions { get => questions; set => questions = value; }
 
         public int[] CorrectAndMisteke { get => correctAndMisteke; set { correctAndMisteke = value; OnPropertyChanged("CorrectAndMisteke"); } }
+        public int MistekeAnswerINT { get => mistekeAnswerINT; set { mistekeAnswerINT = value; OnPropertyChanged("MistekeAnswerINT"); } }
+        public int CorrectAnswerINT { get => correctAnswerINT; set { correctAnswerINT = value; OnPropertyChanged("CorrectAnswerINT"); } }
         public bool ButtonIsEnable { get => buttonIsEnable; set { buttonIsEnable = value; OnPropertyChanged("ButtonIsEnable"); } }
         public string[] ContentButton { get => contentButton; set { contentButton = value; OnPropertyChanged("ContentButton"); } }
         public string Question { get => question; set { question = value; OnPropertyChanged("Question"); } }
+        public bool SaveProfileOnExit { get; set; }
+        public DateTime SaveProfileOnExitTime { get; set; }
 
         #region start and last index
         public int Start_index
@@ -107,8 +113,8 @@ namespace ViewModel
                           if (but != null)
                           {
                               ContentAndcolors.AddButtonList(but);
-                              CorrectAndMisteke[0] = ContentAndcolors.MistekeAnswerINT;
-                              CorrectAndMisteke[1] = ContentAndcolors.CorrectAnswerINT;//переделать!!
+                              MistekeAnswerINT = ContentAndcolors.MistekeAnswerINT;
+                              CorrectAnswerINT = ContentAndcolors.CorrectAnswerINT;
                           }
                       }
                       else
@@ -133,7 +139,8 @@ namespace ViewModel
                               Questions = new QuestionsAndAnswerOptions();
                               ContentAndcolors.Questions = Questions;
                               ButtonIsEnable = true;
-                              CorrectAndMisteke = new int[] { 0, 0 };
+                              MistekeAnswerINT = 0;
+                              CorrectAnswerINT = 0;
 
                               Last_index = ContentAndcolors.Questions.LenghtList;
                               Start_index = 0;
@@ -208,14 +215,45 @@ namespace ViewModel
 
                       if (sfd.ShowDialog() == true)
                       {
+                          SaveProfileOnExitTime = DateTime.Now;
+                          SaveProfileOnExit = true;
                           mydocu = $"{sfd.FileName}.vbdata";
                           StreamWriter sr = File.CreateText(mydocu);
                           sr.WriteLine($"{UserName}");
-                          sr.WriteLine($"{CorrectAndMisteke[0]}");
-                          sr.WriteLine($"{CorrectAndMisteke[1]}");
+                          sr.WriteLine($"{CorrectAnswerINT}");
+                          sr.WriteLine($"{MistekeAnswerINT}");
                           sr.Close();
                           MessageBox.Show($"Profile {UserName} save");
                       }
+
+                  }));
+            }
+        }
+        public RelayCommand Exit
+        {
+            get
+            {
+                return exit ??
+                  (exit = new RelayCommand(obj =>
+                  {
+                      Application.Current.Shutdown();
+                      //if ((DateTime.Now - SaveProfileOnExitTime).TotalSeconds < 15)
+                      //{
+                      //   Application.Current.Shutdown();
+                      //}
+                      //else
+                      //{
+                      //    DialogWindow dialog = new DialogWindow();
+                      //    if (dialog.ShowDialog() == true)
+                      //    {
+                      //        // Пользователь разрешил действие. Продолжить1
+                      //    }
+                      //    else
+                      //    {
+                      //        // Пользователь отменил действие.
+                      //    }
+                      //}
+
 
                   }));
             }
@@ -261,11 +299,11 @@ namespace ViewModel
                 return openQuestions ?? (openQuestions = new RelayCommand(obj =>
                 {
 
-                    OpenFileDialog ofd = new OpenFileDialog
-                    {
-                        Filter = "Text Files(*.txt)|*.txt|All Files (*.*)|*.*",
-                        InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\",
-                    };
+                        OpenFileDialog ofd = new OpenFileDialog
+                        {
+                            Filter = "Text Files(*.txt)|*.txt|All Files (*.*)|*.*",
+                            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\",
+                        };
 
                     if (ofd.ShowDialog() == true)
                     {

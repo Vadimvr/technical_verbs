@@ -18,8 +18,10 @@ namespace ViewModel
         public string[] ContentButton { get; set; }
         public Button ButtonStart { get; set; }
         public bool NewQestion { get; set; }
+       
         public string CorrectAnswer { get; set; }
         List<Button> ListButton = new List<Button>();
+        
         public ButtonList(Button but) 
         {
             ButtonStart = but;

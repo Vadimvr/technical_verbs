@@ -71,7 +71,6 @@ namespace Model
                     {
                         if (s[i] == '\t')
                         {
-
                             break;
                         }
                     }
@@ -88,7 +87,7 @@ namespace Model
                     
                 }
                 else
-                    MessageBox.Show(path + "\n не удалось добавить");
+                    MessageBox.Show(path + "\n не удалось добавить мало контента");
 
             }
             catch (Exception ex)

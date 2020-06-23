@@ -81,7 +81,7 @@
                 <MenuItem Command="{Binding OpenProfile}" Header="Open profile" />
                 <MenuItem Command="{Binding SaveProfile}" Header="Save profile" />
                 <MenuItem Command="{Binding OpenQuestions}" Header="Open questions" />
-                <MenuItem Header="Exit" />
+                <MenuItem  Command="{Binding Exit}" Header="Exit" />
             </MenuItem>
             <MenuItem Header="Setting">
                 <!--#region  Username-->
@@ -167,7 +167,7 @@
             Grid.Row="2"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="{Binding CorrectAndMisteke[0]}" />
+            Text="{Binding MistekeAnswerINT}" />
         <!--#endregion-->
         <!--#region Correct-->
 
@@ -175,7 +175,7 @@
             Grid.Row="3"
             Grid.Column="0"
             Style="{StaticResource TextBlockStyle}"
-            Text="{Binding CorrectAndMisteke[1]}" />
+            Text="{Binding  CorrectAnswerINT}" />
         <!--#endregion-->
 
         <!--#region Question-->
