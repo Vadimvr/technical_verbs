@@ -25,7 +25,7 @@ namespace ViewModel
         string[] contentButton;
         bool buttonIsEnable = false;
         private RelayCommand newQuestionAndStartTest;
-        private RelayCommand checkForTheCorrectAnswer; 
+        private RelayCommand checkForTheCorrectAnswer;
         private RelayCommand saveProfile;
         private RelayCommand openProfile;
         private RelayCommand indexСhange;
@@ -48,7 +48,7 @@ namespace ViewModel
         public bool ButtonIsEnable { get => buttonIsEnable; set { buttonIsEnable = value; OnPropertyChanged("ButtonIsEnable"); } }
         public string[] ContentButton { get => contentButton; set { contentButton = value; OnPropertyChanged("ContentButton"); } }
         public string Question { get => question; set { question = value; OnPropertyChanged("Question"); } }
-        
+
         #region start and last index
         public int Start_index
         {
@@ -88,7 +88,7 @@ namespace ViewModel
         }
 
         #endregion
-        
+
         #endregion
 
 
@@ -105,9 +105,10 @@ namespace ViewModel
                       {
                           Button but = obj as Button;
                           if (but != null)
-                          {                               
+                          {
                               ContentAndcolors.AddButtonList(but);
-                              CorrectAndMisteke = new int[] { ContentAndcolors.MistekeAnswerINT, ContentAndcolors.CorrectAnswerINT };
+                              CorrectAndMisteke[0] = ContentAndcolors.MistekeAnswerINT;
+                              CorrectAndMisteke[1] = ContentAndcolors.CorrectAnswerINT;//переделать!!
                           }
                       }
                       else
@@ -133,11 +134,11 @@ namespace ViewModel
                               ContentAndcolors.Questions = Questions;
                               ButtonIsEnable = true;
                               CorrectAndMisteke = new int[] { 0, 0 };
-                              
+
                               Last_index = ContentAndcolors.Questions.LenghtList;
                               Start_index = 0;
                           }
-                          ContentAndcolors.NewRandomQuestion(Start_index,Last_index);
+                          ContentAndcolors.NewRandomQuestion(Start_index, Last_index);
                           Question = ContentAndcolors.Question;
                           ContentButton = ContentAndcolors.ContentButton;
                       }
@@ -207,7 +208,7 @@ namespace ViewModel
 
                       if (sfd.ShowDialog() == true)
                       {
-                          mydocu =  $"{sfd.FileName}.vbdata";
+                          mydocu = $"{sfd.FileName}.vbdata";
                           StreamWriter sr = File.CreateText(mydocu);
                           sr.WriteLine($"{UserName}");
                           sr.WriteLine($"{CorrectAndMisteke[0]}");
@@ -215,7 +216,7 @@ namespace ViewModel
                           sr.Close();
                           MessageBox.Show($"Profile {UserName} save");
                       }
-                      
+
                   }));
             }
         }
@@ -259,17 +260,24 @@ namespace ViewModel
             {
                 return openQuestions ?? (openQuestions = new RelayCommand(obj =>
                 {
-                  
+
                     OpenFileDialog ofd = new OpenFileDialog
                     {
                         Filter = "Text Files(*.txt)|*.txt|All Files (*.*)|*.*",
                         InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tv\",
                     };
-                    
+
                     if (ofd.ShowDialog() == true)
                     {
-
                         Questions.NewQuestions(ofd.FileName);
+                        Last_index = Questions.LenghtList;
+                        if (ContentAndcolors != null)
+                        {
+                            ContentAndcolors.ButtonStart.IsEnabled = true;
+                            Question = "Plis click NEXT";
+                        }
+                        CorrectAndMisteke[0] = 0;
+                        CorrectAndMisteke[1] = 0;
                     }
                 }));
             }
@@ -283,14 +291,14 @@ namespace ViewModel
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
 
-        
+
     }
 }
 

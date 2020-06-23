@@ -83,7 +83,10 @@ namespace Model
                     }
                 }
                 if (newQuestions.Count > +5)
+                {
                     data = newQuestions;
+                    
+                }
                 else
                     MessageBox.Show(path + "\n не удалось добавить");
 
@@ -98,16 +101,16 @@ namespace Model
         //// test
         static List<List<string>> data = new List<List<string>>
         {
-            new List<string>{ "1", "нажми 1" },
-            new List<string>{ "2", "нажми 2" },
-            new List<string>{ "3", "нажми 3" },
-            new List<string>{ "4", "нажми 4" },
-            new List<string>{ "5", "нажми 5" },
-            new List<string>{ "6", "нажми 6" },
-            new List<string>{ "7", "нажми 7" },
-            new List<string>{ "8", "нажми 8" },
-            new List<string>{ "9", "нажми 9" },
-            new List<string>{ "10", "нажми 10"}
+            new List<string>{ "1", "Click  1" },
+            new List<string>{ "2", "Click 2" },
+            new List<string>{ "3", "Click 3" },
+            new List<string>{ "4", "Click 4" },
+            new List<string>{ "5", "Click 5" },
+            new List<string>{ "6", "Click 6" },
+            new List<string>{ "7", "Click 7" },
+            new List<string>{ "8", "Click 8" },
+            new List<string>{ "9", "Click 9" },
+            new List<string>{ "10", "Click 10" }
         };
 
     }
